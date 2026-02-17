@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Login V2 - Interactive</title>
+    <style>
+        .login-container { width: 300px; margin: 50px auto; }
+        input, button { display: block; width: 100%; margin: 10px 0; padding: 8px; }
+        p { color: red; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button id="button-submit">Log In</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        const loginButton = document.getElementById("button-submit");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const message = document.getElementById("message");
+
+        loginButton.addEventListener("click", () => {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (!username && !password) {
+                message.style.color = "red";
+                message.textContent = "Please enter your username and password";
+            } else if (!username) {
+                message.style.color = "red";
+                message.textContent = "Please enter your username";
+            } else if (!password) {
+                message.style.color = "red";
+                message.textContent = "Please enter your password";
+            } else {
+                message.textContent = "Successful login";
+                message.style.color = "green";
+            }
+        });
+    </script>
+</body>
+</html>
