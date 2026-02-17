@@ -1,6 +1,6 @@
 # AI-Powered Self-Healing Automation Framework
 
-A resilient UI automation framework built with Python, Playwright, and Ollama. This project demonstrates a "Self-Healing" capability where AI identifies and recovers from broken web selectors in real-time, significantly reducing manual test maintenance.
+This project demonstrates a "Self-Healing" capability where AI identifies and recovers from broken web selectors in real-time, significantly reducing manual test maintenance.
 
 ## Key Features
 * AI Self-Healing: Intercepts Timeout or SelectorNotFound errors and uses a local LLM (Mistral) to suggest updated selectors based on the current DOM state.
@@ -107,3 +107,16 @@ or
 ```
 pytest --heal --no-report
 ```
+
+## Future Improvements
+1. Better Performance & Speed
+Stronger AI Models: I currently use Mistral-7B because of my local hardware limits. Switching to more powerful models (like GPT-4 or Llama-3 70B) would make the "healing" even more accurate for complex applications.
+
+2. Visual Healing
+Right now, the LLM "reads" the code (HTML) to find fixed elements. A possible upgrade could include Visual Healing, where the LLM looks at screenshots of the page. This would allow the framework to find buttons based on how they look and where they are on the screen, even if the code behind them changes completely.
+
+3. Permanent Fixes (Auto-Updating Code)
+Instead of having the LLM fix the same broken link every time the test runs, the framework could automatically update the code. It could create a "Pull Request" that replaces the old, broken selector with the new one in my constants.py file, saving time and computing power.
+
+4. Smarter Data Processing
+To save memory and speed things up, the data passed to the LLM could be "cleaned". By removing unnecessary parts of the page code, the AI can focus only on the buttons and inputs that matter.
